@@ -217,9 +217,38 @@ export enum ReaOnResponseFail {
   WAIT
 }
 
+export interface ExperimentAssetInfo {
+  name: string;
+}
+
+export interface ExperimentAudioAssetInfo extends ExperimentAssetInfo {
+  // TODO přidat audio only property
+}
+
+export interface ExperimentImageAssetInfo extends ExperimentAssetInfo, OutputImageDefinition {}
+
 export interface ExperimentAssets {
-  audio: Record<number, string>;
-  image: Record<number, string>;
+  audio: Record<number, ExperimentAudioAssetInfo>;
+  image: Record<number, ExperimentImageAssetInfo>;
+}
+
+export function outputToAudioAssetInfo(output: Output): ExperimentAudioAssetInfo {
+  return {
+    name: output.outputType.audioFile as string
+  }
+}
+
+export function outputToImageAssetInfo(output: Output): ExperimentImageAssetInfo {
+  return {
+    name: output.outputType.imageFile as string,
+    x: output.x,
+    y: output.y,
+    width: output.width,
+    height: output.height,
+    manualAlignment: output.manualAlignment,
+    horizontalAlignment: output.horizontalAlignment,
+    verticalAlignment: output.verticalAlignment
+  }
 }
 
 export function experimentTypeFromRaw(raw: string): ExperimentType {
