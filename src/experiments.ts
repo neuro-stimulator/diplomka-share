@@ -1,3 +1,5 @@
+import { UserGroups } from './users';
+
 export interface Experiment<O extends Output> {
   // Unikátní ID přes všechny experimenty
   id?: number;
@@ -19,6 +21,8 @@ export interface Experiment<O extends Output> {
   supportSequences: boolean;
   // Kolekce výstupů
   outputs: O[];
+  // Kolekce uživatelských skupin, do kterých experiment patří
+  userGroups?: UserGroups;
 }
 
 export interface Output extends OutputLedDefinition, OutputImageDefinition {
@@ -381,7 +385,8 @@ export function createEmptyExperiment<O extends Output>(): Experiment<O> {
     outputCount: 1,
     tags: [],
     supportSequences: false,
-    outputs: []
+    outputs: [],
+    userGroups: {}
   };
 }
 

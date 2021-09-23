@@ -20,6 +20,7 @@ export class MessageCodes {
     public static readonly CODE_SUCCESS_EXPERIMENT_CREATED = 10001;
     public static readonly CODE_ERROR_EXPERIMENT_WAS_NOT_CREATED = 10301;
     public static readonly CODE_SUCCESS_EXPERIMENT_UPDATED = 10002;
+    public static readonly CODE_SUCCESS_EXPERIMENT_UPDATE_NOT_NECESSARY = 10102;
     public static readonly CODE_ERROR_EXPERIMENT_WAS_NOT_UPDATED = 10302;
     public static readonly CODE_SUCCESS_EXPERIMENT_DELETED = 10003;
     public static readonly CODE_ERROR_EXPERIMENT_WAS_NOT_DELETED = 10303;
@@ -32,6 +33,7 @@ export class MessageCodes {
     public static readonly CODE_SUCCESS_EXPERIMENT_RESULT_CREATED = 20001;
     public static readonly CODE_ERROR_EXPERIMENT_RESULT_WAS_NOT_CREATED = 20301;
     public static readonly CODE_SUCCESS_EXPERIMENT_RESULT_UPDATED = 20002;
+    public static readonly CODE_SUCCESS_EXPERIMENT_RESULT_UPDATE_NOT_NECESSARY = 20102;
     public static readonly CODE_ERROR_EXPERIMENT_RESULT_WAS_NOT_UPDATED = 20302;
     public static readonly CODE_SUCCESS_EXPERIMENT_RESULT_DELETED = 20003;
     public static readonly CODE_ERROR_EXPERIMENT_RESULT_WAS_NOT_DELETED = 20303;
@@ -46,6 +48,7 @@ export class MessageCodes {
     public static readonly CODE_SUCCESS_SEQUENCE_CREATED = 30001;
     public static readonly CODE_ERROR_SEQUENCE_NOT_CREATED = 30301;
     public static readonly CODE_SUCCESS_SEQUENCE_UPDATED = 30002;
+    public static readonly CODE_SUCCESS_SEQUENCE_UPDATE_NOT_NECESSARY = 30102;
     public static readonly CODE_ERROR_SEQUENCE_NOT_UPDATED = 30302;
     public static readonly CODE_SUCCESS_SEQUENCE_DELETED = 30003;
     public static readonly CODE_ERROR_SEQUENCE_NOT_DELETED = 30303;
@@ -121,18 +124,18 @@ export class MessageCodes {
     public static readonly CODE_ERROR_AUTH_TOKEN_EXPIRED = 90303;
     public static readonly CODE_ERROR_AUTH_TOKEN_NOT_FOUND = 90304;
 
-    // chybové zprávy pro přehrávač 'player' začínají na 10000
-    public static readonly CODE_ERROR_PLAYER_EXPERIMENT_RESULT_IS_NOT_INITIALIZED = 11301;
-    public static readonly CODE_ERROR_PLAYER_ANOTHER_EXPERIMENT_RESULT_IS_INITIALIZED = 11302;
-    public static readonly CODE_ERROR_PLAYER_UNSUPPORTED_STOP_CONDITION = 11303;
+    // chybové zprávy pro přehrávač 'player' začínají na 100000
+    public static readonly CODE_ERROR_PLAYER_EXPERIMENT_RESULT_IS_NOT_INITIALIZED = 100301;
+    public static readonly CODE_ERROR_PLAYER_ANOTHER_EXPERIMENT_RESULT_IS_INITIALIZED = 100302;
+    public static readonly CODE_ERROR_PLAYER_UNSUPPORTED_STOP_CONDITION = 100303;
 
-    // chybové zprávy pro 'user' začínají na 11000
-    public static readonly CODE_ERROR_USER_NOT_FOUND = 11300;
-    public static readonly CODE_ERROR_USER_ID_NOT_FOUND = 11301;
-    public static readonly CODE_ERROR_USER_NOT_VALID = 11302;
-    public static readonly CODE_SUCCESS_USER_CREATED = 11003;
-    public static readonly CODE_ERROR_USER_NOT_CREATED = 11303;
-    public static readonly CODE_ERROR_USER_NOT_UPDATED = 11304;
-    public static readonly CODE_ERROR_USER_NOT_DELETED = 11305;
-    public static readonly CODE_ERROR_USER_NOT_REGISTRED = 11306;
+    // chybové zprávy pro 'user' začínají na 110000
+    public static readonly CODE_ERROR_USER_NOT_FOUND = 110300;
+    public static readonly CODE_ERROR_USER_ID_NOT_FOUND = 110301;
+    public static readonly CODE_ERROR_USER_NOT_VALID = 110302;
+    public static readonly CODE_SUCCESS_USER_CREATED = 110003;
+    public static readonly CODE_ERROR_USER_NOT_CREATED = 110303;
+    public static readonly CODE_ERROR_USER_NOT_UPDATED = 110304;
+    public static readonly CODE_ERROR_USER_NOT_DELETED = 110305;
+    public static readonly CODE_ERROR_USER_NOT_REGISTRED = 110306;
 }

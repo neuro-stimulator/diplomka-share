@@ -7,6 +7,7 @@ export interface User {
 	lastLoginDate?: number;
 	createdAt?: number;
 	updatedAt?: number;
+	userGroups?: UserGroups;
 }
 
 export function createEmptyUser(): User {
@@ -16,4 +17,10 @@ export function createEmptyUser(): User {
 		password: '',
 		lastLoginDate: new Date().getTime()
 	}
+}
+
+export type UserGroups = Record<number, UserGroupInfo>;
+export interface UserGroupInfo {
+	id: number;
+	name?: string;
 }
