@@ -1,6 +1,6 @@
 {
   "name": "@stechy1/diplomka-share",
-  "version": "1.0.53",
+  "version": "1.0.54",
   "description": "Sdílený modul mezi backendem a frontendem výsledné aplikace. Slouží pro sjednocení komunikačního rozhraní.",
   "main": "lib/index.js",
   "types": "lib",

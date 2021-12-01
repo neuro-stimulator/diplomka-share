@@ -1,3 +1,5 @@
+import { Acl } from './acl';
+
 export interface User {
 	id?: number;
 	uuid?: string;
@@ -8,6 +10,7 @@ export interface User {
 	createdAt?: number;
 	updatedAt?: number;
 	userGroups?: UserGroups;
+	acl?: Acl[];
 }
 
 export function createEmptyUser(): User {
@@ -15,7 +18,8 @@ export function createEmptyUser(): User {
 		username: '',
 		email: '',
 		password: '',
-		lastLoginDate: new Date().getTime()
+		lastLoginDate: new Date().getTime(),
+		acl: []
 	}
 }
 

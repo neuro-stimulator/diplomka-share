@@ -123,6 +123,7 @@ export class MessageCodes {
     public static readonly CODE_ERROR_AUTH_TOKEN_REFRESH_FAILED = 90302;
     public static readonly CODE_ERROR_AUTH_TOKEN_EXPIRED = 90303;
     public static readonly CODE_ERROR_AUTH_TOKEN_NOT_FOUND = 90304;
+    public static readonly CODE_ERROR_AUTH_PERMISSION_DENIED = 90305;
 
     // chybové zprávy pro přehrávač 'player' začínají na 100000
     public static readonly CODE_ERROR_PLAYER_EXPERIMENT_RESULT_IS_NOT_INITIALIZED = 100301;

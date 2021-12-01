@@ -11,3 +11,4 @@ export * from './communication/client-server';
 export * from './users';
 export * from './player';
 export * from './settings';
+export * from './acl';
