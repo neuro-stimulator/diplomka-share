@@ -139,4 +139,15 @@ export class MessageCodes {
     public static readonly CODE_ERROR_USER_NOT_UPDATED = 110304;
     public static readonly CODE_ERROR_USER_NOT_DELETED = 110305;
     public static readonly CODE_ERROR_USER_NOT_REGISTRED = 110306;
+
+    // Chybové zprávy pro 'acl' začínají na 120000
+    public static readonly CODE_ERROR_ACL_NOT_FOUND = 30300;
+    public static readonly CODE_SUCCESS_ACL_CREATED = 30001;
+    public static readonly CODE_ERROR_ACL_NOT_CREATED = 30301;
+    public static readonly CODE_SUCCESS_ACL_UPDATED = 30002;
+    public static readonly CODE_SUCCESS_ACL_UPDATE_NOT_NECESSARY = 30102;
+    public static readonly CODE_ERROR_ACL_NOT_UPDATED = 30302;
+    public static readonly CODE_SUCCESS_ACL_DELETED = 30003;
+    public static readonly CODE_ERROR_ACL_NOT_DELETED = 30303;
+    public static readonly CODE_ERROR_ACL_ALREADY_EXISTS = 30306;
 }
