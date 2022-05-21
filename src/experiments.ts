@@ -80,6 +80,14 @@ export interface OutputType {
   imageFile?: string;
   audio?: boolean;
   audioFile?: string;
+  matrix?: boolean;
+  matrixContent?: number[];
+}
+
+export interface MatrixLed {
+  r: number;
+  g: number;
+  b: number;
 }
 
 export interface ExperimentERP extends ExperimentSupportSequences<ErpOutput, ErpOutputDependency> {
@@ -334,7 +342,7 @@ export function reaOnResponseFailFromRaw(raw: string): ReaOnResponseFail {
 }
 
 export function outputTypeFromRaw(outputTypeRaw: number): OutputType {
-  const outputType: OutputType = { led: false, audio: false, image: false };
+  const outputType: OutputType = { led: false, audio: false, image: false, matrix: false };
   // 0b0001
   if (outputTypeRaw & 0x01) {
     outputType.led = true;
@@ -346,6 +354,10 @@ export function outputTypeFromRaw(outputTypeRaw: number): OutputType {
   // 0b0100
   if (outputTypeRaw & 0x04) {
     outputType.image = true;
+  }
+  // 0b0100
+  if (outputTypeRaw & 0x08) {
+    outputType.matrix = true;
   }
 
   return outputType;
@@ -364,6 +376,10 @@ export function outputTypeToRaw(outputType: OutputType): number {
   // 0b0100
   if (outputType.image !== undefined && outputType.image) {
     outputTypeRaw |= 0x04;
+  }
+  // 0b1000
+  if (outputType.image !== undefined && outputType.matrix) {
+    outputTypeRaw |= 0x08;
   }
 
   return outputTypeRaw;
@@ -651,7 +667,6 @@ export function createAllTypesExperiments(): Experiment<Output>[] {
 /**
  * Na základě typu experimentu vrátí výstup pro daný index s výchozími hodnotami
  *
- * @param type {@link ExperimentType} Typ experimentu
  * @param experiment {@link Experiment} Experiment samotný
  * @param index number Index výstupu
  */
@@ -670,4 +685,30 @@ export function createEmptyOutputByType(experiment: Experiment<Output>, index: n
     default:
       return createEmptyOutput(experiment, index);
   }
+}
+
+/**
+ * Převede 32-bit číslo na jednotlivé barevné složky
+ *
+ * @param value 32-bit číslo
+ * @returns {@link MatrixLed}
+ */
+export function numberToMatrixLed(value: number): MatrixLed {
+  return {
+    r: (value >> 16) & 0x0ff,
+    g: (value >> 8)  & 0xff,
+    b: (value)       & 0xff
+  }
+}
+
+/**
+ * Převede {@link MatrixLed} na 32-bitové číslo
+ *
+ * @param matrixLed {@link MatrixLed}
+ * @returns 32-bitové číslo obsahující rgb složky
+ */
+export function matrixLedToNumber(matrixLed: MatrixLed): number {
+  return ((matrixLed.r & 0x0ff) << 16)
+       | ((matrixLed.g & 0x0ff) << 8)
+       |  (matrixLed.b & 0x0ff);
 }
