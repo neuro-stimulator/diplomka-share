@@ -27,7 +27,8 @@ export class CommandToStimulator {
 	// Příkaz pro nastavení displaye
 	public static readonly COMMAND_DISPLAY = 0x02;
 	public static readonly COMMAND_DISPLAY_ACTION_CLEAR = 0x00;
-	public static readonly COMMAND_DISPLAY_ACTION_SET = 0x01;
+	public static readonly COMMAND_DISPLAY_ACTION_PRINT = 0x01;
+	public static readonly COMMAND_DISPLAY_ACTION_PRINT_LINE = 0x02;
 
 	// Příkaz pro správu experimentu
 	public static readonly COMMAND_MANAGE_EXPERIMENT = 0x03;
@@ -95,7 +96,8 @@ export class CommandClientToServer {
 	public static readonly COMMAND_SEQUENCE_PART = 'sequence-part';
 
 	public static readonly COMMAND_DISPLAY_CLEAR = 'display-clear';
-	public static readonly COMMAND_DISPLAY_TEXT = 'display-text';
+	public static readonly COMMAND_DISPLAY_PRINT = 'display-print';
+	public static readonly COMMAND_DISPLAY_PRINT_LINE = 'display-print-line';
 
 }
 
