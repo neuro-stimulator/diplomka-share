@@ -385,19 +385,25 @@ export function outputTypeToRaw(outputType: OutputType): number {
   return outputTypeRaw;
 }
 
+export function createLedOutputConfiguration(): OutputType {
+  return {
+    led: true,
+    image: false,
+    audio: false,
+    matrix: false,
+    imageFile: undefined,
+    audioFile: undefined,
+    matrixContent: undefined
+  };
+}
+
 export function createEmptyExperiment<O extends Output>(): Experiment<O> {
   return {
     name: '',
     description: '',
     created: new Date().getTime(),
     type: ExperimentType.NONE,
-    usedOutputs: {
-      led: true,
-      image: false,
-      audio: false,
-      imageFile: undefined,
-      audioFile: undefined
-    },
+    usedOutputs: createLedOutputConfiguration(),
     outputCount: 1,
     tags: [],
     supportSequences: false,
@@ -411,13 +417,7 @@ export function createEmptyOutput(experiment: Experiment<Output>, index: number)
     id: 1,
     experimentId: experiment.id as number,
     orderId: index,
-    outputType: {
-      led: true,
-      image: false,
-      audio: false,
-      imageFile: undefined,
-      audioFile: undefined
-    },
+    outputType: createLedOutputConfiguration(),
     brightness: 100,
     x: 0,
     y: 0,
@@ -448,29 +448,15 @@ export function createEmptyExperimentERP(): ExperimentERP {
 }
 
 export function createEmptyOutputERP(experiment: ExperimentERP, index: number): ErpOutput {
+  const output = createEmptyOutput(experiment, index);
+
   return {
-    id: 1,
-    experimentId: experiment.id as number,
-    orderId: index,
-    outputType: {
-      led: true,
-      image: false,
-      audio: false,
-      imageFile: undefined,
-      audioFile: undefined
-    },
-    pulseUp: 1000,
-    pulseDown: 1000,
+    ...output,
+
     distribution: 0,
-    brightness: 100,
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    manualAlignment: false,
-    horizontalAlignment: HorizontalAlignment.CENTER,
-    verticalAlignment: VerticalAlignment.CENTER,
-    dependencies: [[], null]
+    pulseDown: 1000,
+    pulseUp: 1000,
+    dependencies: [[], undefined]
   };
 }
 
@@ -490,25 +476,10 @@ export function createEmptyExperimentCVEP(): ExperimentCVEP {
 }
 
 export function createEmptyOutputCVEP(experiment: ExperimentCVEP, index: number): CvepOutput {
+  const output = createEmptyOutput(experiment, index);
+
   return {
-    id: 1,
-    experimentId: experiment.id as number,
-    orderId: index,
-    outputType: {
-      led: true,
-      image: false,
-      audio: false,
-      imageFile: undefined,
-      audioFile: undefined
-    },
-    brightness: 100,
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    manualAlignment: false,
-    horizontalAlignment: HorizontalAlignment.CENTER,
-    verticalAlignment: VerticalAlignment.CENTER
+    ...output
   };
 }
 
@@ -523,29 +494,15 @@ export function createEmptyExperimentFVEP(): ExperimentFVEP {
 }
 
 export function createEmptyOutputFVEP(experiment: ExperimentFVEP, index: number): FvepOutput {
+  const output = createEmptyOutput(experiment, index);
+
   return {
-    id: 1,
-    experimentId: experiment.id as number,
-    orderId: index,
-    outputType: {
-      led: true,
-      image: false,
-      audio: false,
-      imageFile: undefined,
-      audioFile: undefined
-    },
+    ...output,
+
     timeOn: 1000,
     timeOff: 1000,
     frequency: 2000,
-    dutyCycle: 2,
-    brightness: 100,
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    manualAlignment: false,
-    horizontalAlignment: HorizontalAlignment.CENTER,
-    verticalAlignment: VerticalAlignment.CENTER
+    dutyCycle: 2
   };
 }
 
@@ -561,30 +518,16 @@ export function createEmptyExperimentTVEP(): ExperimentTVEP {
 }
 
 export function createEmptyOutputTVEP(experiment: ExperimentTVEP, index: number): TvepOutput {
+  const output = createEmptyOutput(experiment, index);
+
   return {
-    id: 1,
-    experimentId: experiment.id as number,
-    orderId: index,
-    outputType: {
-      led: true,
-      image: false,
-      audio: false,
-      imageFile: undefined,
-      audioFile: undefined
-    },
+    ...output,
+
     out: 1000,
     wait: 1000,
     patternLength: 1,
     pattern: 0,
-    brightness: 100,
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    manualAlignment: false,
-    horizontalAlignment: HorizontalAlignment.CENTER,
-    verticalAlignment: VerticalAlignment.CENTER
-  };
+  }
 }
 
 export function createEmptyExperimentREA(): ExperimentREA {
@@ -604,26 +547,11 @@ export function createEmptyExperimentREA(): ExperimentREA {
 }
 
 export function createEmptyOutputREA(experiment: ExperimentREA, index: number): ReaOutput {
+  const output = createEmptyOutput(experiment, index);
+
   return {
-    id: 1,
-    experimentId: experiment.id as number,
-    orderId: index,
-    outputType: {
-      led: true,
-      image: false,
-      audio: false,
-      imageFile: undefined,
-      audioFile: undefined
-    },
-    brightness: 100,
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    manualAlignment: false,
-    horizontalAlignment: HorizontalAlignment.CENTER,
-    verticalAlignment: VerticalAlignment.CENTER
-  };
+    ...output
+  }
 }
 
 /**
